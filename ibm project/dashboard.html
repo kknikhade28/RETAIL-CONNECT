@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - RetailConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dashboard-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding-top: 80px;
+        }
+        
+        .dashboard-header {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00A86B, #10b981);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .dashboard-content {
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00A86B;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #64748b;
+            font-size: 1rem;
+        }
+        
+        .quick-actions {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .quick-actions h2 {
+            color: #0A2540;
+            margin-bottom: 20px;
+        }
+        
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .action-btn {
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #00A86B, #10b981);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 168, 107, 0.3);
+        }
+        
+        .logout-btn {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">RetailConnect</a>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <span id="userEmail">user@example.com</span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div>
+                <h1 id="welcomeMessage">Welcome to Dashboard</h1>
+                <p id="userTypeDisplay">Retailer Dashboard</p>
+            </div>
+        </div>
+        
+        <div class="dashboard-content">
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-number">156</div>
+                    <div class="stat-label">Total Connections</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">89%</div>
+                    <div class="stat-label">Profile Completion</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Active Orders</div>
+                </div>
+            </div>
+            
+            <div class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="showSuppliers()">🔍 Find Suppliers</button>
+                    <button class="action-btn" onclick="showOrders()">📦 My Orders</button>
+                    <button class="action-btn" onclick="showMessages()">💬 Messages</button>
+                    <button class="action-btn" onclick="showProfile()">⚙️ Profile Settings</button>
+                    <button class="action-btn" onclick="showAnalytics()">📊 Analytics</button>
+                    <button class="action-btn" onclick="showSupport()">🆘 Support</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load user data from session
+        function loadUserData() {
+            const userType = sessionStorage.getItem('userType') || 'retailer';
+            const userEmail = sessionStorage.getItem('userEmail') || 'user@example.com';
+            const userData = localStorage.getItem('userData');
+            
+            document.getElementById('userEmail').textContent = userEmail;
+            document.getElementById('userTypeDisplay').textContent = `${userType.charAt(0).toUpperCase() + userType.slice(1)} Dashboard`;
+            document.getElementById('welcomeMessage').textContent = `Welcome, ${userType}!`;
+            
+            // Set avatar initial
+            const initial = userEmail.charAt(0).toUpperCase();
+            document.getElementById('userAvatar').textContent = initial;
+        }
+        
+        function logout() {
+            sessionStorage.clear();
+            alert('Logged out successfully!');
+            window.location.href = 'index.html';
+        }
+        
+        // Quick action handlers
+        function showSuppliers() {
+            alert('Supplier directory:\n\n1. Mumbai Electronics Wholesale\n2. Delhi Textile Hub\n3. Bangalore Food Suppliers\n4. Chennai Hardware Store\n5. Kolkata Fashion Wholesale\n\nContact suppliers directly through our platform!');
+        }
+        
+        function showOrders() {
+            alert('Active Orders:\n\n• Order #1234 - Electronics (Pending)\n• Order #1235 - Clothing (Shipped)\n• Order #1236 - Food Items (Processing)\n• Order #1237 - Hardware (Delivered)');
+        }
+        
+        function showMessages() {
+            alert('Messages:\n\n📩 New message from Mumbai Electronics\n📩 Order confirmation from Delhi Textile\n📩 Price update from Bangalore Food\n\n3 unread messages');
+        }
+        
+        function showProfile() {
+            alert('Profile Settings:\n\n• Business Information: Complete\n• Contact Details: Complete\n• Payment Methods: Complete\n• Shipping Preferences: Pending\n\nProfile completion: 89%');
+        }
+        
+        function showAnalytics() {
+            alert('Business Analytics:\n\n📈 This Month:\n• Total Orders: 45\n• Revenue: ₹2,45,000\n• Growth: +12%\n• Top Category: Electronics\n\n📊 Year to Date:\n• Total Revenue: ₹18,50,000\n• Active Suppliers: 23\n• Customer Satisfaction: 4.8/5');
+        }
+        
+        function showSupport() {
+            alert('Support Center:\n\n📞 Helpline: 1800-123-4567\n📧 Email: support@retailconnect.com\n💬 Live Chat: Available 24/7\n\nCommon Issues:\n• Order tracking\n• Payment problems\n• Supplier verification\n• Platform usage');
+        }
+        
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', loadUserData);
+    </script>
+</body>
+</html>

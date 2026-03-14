@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RetailConnect – an AI‑powered platform connecting retailers and wholesalers across India to simplify supply chains and grow businesses.">
+    <title>RetailConnect</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- favicon placeholder -->
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <nav class="navbar">
+        <a href="#home" class="logo">RetailConnect</a>
+        <div class="menu-toggle" id="mobile-menu" aria-label="Toggle menu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#retailers">Retailers</a></li>
+            <li><a href="#wholesalers">Wholesalers</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="login.html" class="nav-cta">Login</a></li>
+            <li><a href="signup.html" class="nav-cta-secondary">Sign Up</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO SECTION -->
+<main>
+<section id="home" class="hero">
+    <div class="container">
+        <h2>Connecting Retailers & Wholesalers Across India</h2>
+        <p>
+            A smart collaboration platform powered by AI to simplify supply chains,
+            improve communication, and enable business growth.
+        </p>
+
+        <button onclick="scrollToServices()" class="hero-btn">Explore Services</button>
+        <button onclick="goToSignup()" class="hero-btn-secondary">Get Started</button>
+    </div>
+</section>
+
+<!-- RETAILERS -->
+<section id="retailers" class="section">
+    <div class="container">
+        <h2>For Retailers</h2>
+
+        <div class="card-container">
+            <div class="card" onclick="showSuppliers()">
+                <h3>Find Verified Suppliers</h3>
+                <p>Access trusted wholesalers across India with verified business profiles.</p>
+            </div>
+
+            <div class="card" onclick="showPricing()">
+                <h3>Bulk Pricing Insights</h3>
+                <p>Understand wholesale pricing and optimize purchasing decisions.</p>
+            </div>
+
+            <div class="card" onclick="showAIAssistant()">
+                <h3>AI Assistance</h3>
+                <p>Use Watson chatbot for instant guidance about products and logistics.</p>
+            </div>
+        </div>
+        
+        <div class="supplier-list-container">
+            <h3>Featured Verified Suppliers</h3>
+            <div class="supplier-grid">
+                <div class="supplier-card">
+                    <div class="supplier-header">
+                        <h4>Mumbai Electronics Hub</h4>
+                        <span class="verified-badge">✓ Verified</span>
+                    </div>
+                    <div class="supplier-details">
+                        <p><strong>Specialization:</strong> Electronics & Gadgets</p>
+                        <p><strong>Location:</strong> Mumbai, Maharashtra</p>
+                        <p><strong>Min Order:</strong> ₹50,000</p>
+                        <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.8/5)</p>
+                    </div>
+                    <button class="contact-btn" onclick="contactSupplier('Mumbai Electronics Hub')">Contact Supplier</button>
+                </div>
+                
+                <div class="supplier-card">
+                    <div class="supplier-header">
+                        <h4>Delhi Textile Wholesale</h4>
+                        <span class="verified-badge">✓ Verified</span>
+                    </div>
+                    <div class="supplier-details">
+                        <p><strong>Specialization:</strong> Textiles & Clothing</p>
+                        <p><strong>Location:</strong> Delhi, NCR</p>
+                        <p><strong>Min Order:</strong> ₹25,000</p>
+                        <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.6/5)</p>
+                    </div>
+                    <button class="contact-btn" onclick="contactSupplier('Delhi Textile Wholesale')">Contact Supplier</button>
+                </div>
+                
+                <div class="supplier-card">
+                    <div class="supplier-header">
+                        <h4>Bangalore Food Suppliers</h4>
+                        <span class="verified-badge">✓ Verified</span>
+                    </div>
+                    <div class="supplier-details">
+                        <p><strong>Specialization:</strong> Food & Beverages</p>
+                        <p><strong>Location:</strong> Bangalore, Karnataka</p>
+                        <p><strong>Min Order:</strong> ₹30,000</p>
+                        <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.7/5)</p>
+                    </div>
+                    <button class="contact-btn" onclick="contactSupplier('Bangalore Food Suppliers')">Contact Supplier</button>
+                </div>
+                
+                <div class="supplier-card">
+                    <div class="supplier-header">
+                        <h4>Chennai Hardware Store</h4>
+                        <span class="verified-badge">✓ Verified</span>
+                    </div>
+                    <div class="supplier-details">
+                        <p><strong>Specialization:</strong> Hardware & Tools</p>
+                        <p><strong>Location:</strong> Chennai, Tamil Nadu</p>
+                        <p><strong>Min Order:</strong> ₹40,000</p>
+                        <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.5/5)</p>
+                    </div>
+                    <button class="contact-btn" onclick="contactSupplier('Chennai Hardware Store')">Contact Supplier</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHOLESALERS -->
+<section id="wholesalers" class="section light">
+    <div class="container">
+        <h2>For Wholesalers</h2>
+
+        <div class="card-container">
+            <div class="card" onclick="showMarketReach()">
+                <h3>Expand Market Reach</h3>
+                <p>Connect with retailers from multiple cities and states.</p>
+                <button class="card-btn">View Markets</button>
+            </div>
+
+            <div class="card" onclick="showDigitalPresence()">
+                <h3>Digital Presence</h3>
+                <p>Showcase product catalog and pricing digitally.</p>
+                <button class="card-btn">Build Catalog</button>
+            </div>
+
+            <div class="card" onclick="showSmartCommunication()">
+                <h3>Smart Communication</h3>
+                <p>Automated responses powered by AI chatbot.</p>
+                <button class="card-btn">Setup AI</button>
+            </div>
+        </div>
+        
+        <div class="wholesaler-features">
+            <h3>Wholesaler Dashboard Features</h3>
+            <div class="feature-grid">
+                <div class="feature-card" onclick="showInventoryManagement()">
+                    <div class="feature-icon">📦</div>
+                    <h4>Inventory Management</h4>
+                    <p>Real-time stock tracking and automated reordering</p>
+                    <button class="feature-btn">Manage Stock</button>
+                </div>
+                
+                <div class="feature-card" onclick="showOrderProcessing()">
+                    <div class="feature-icon">📋</div>
+                    <h4>Order Processing</h4>
+                    <p>Streamlined order fulfillment and tracking</p>
+                    <button class="feature-btn">View Orders</button>
+                </div>
+                
+                <div class="feature-card" onclick="showPricingStrategy()">
+                    <div class="feature-icon">💰</div>
+                    <h4>Pricing Strategy</h4>
+                    <p>Dynamic pricing and bulk discount management</p>
+                    <button class="feature-btn">Set Prices</button>
+                </div>
+                
+                <div class="feature-card" onclick="showAnalytics()">
+                    <div class="feature-icon">📊</div>
+                    <h4>Business Analytics</h4>
+                    <p>Sales insights and performance metrics</p>
+                    <button class="feature-btn">View Reports</button>
+                </div>
+                
+                <div class="feature-card" onclick="showCustomerManagement()">
+                    <div class="feature-icon">👥</div>
+                    <h4>Customer Management</h4>
+                    <p>Retailer relationships and communication</p>
+                    <button class="feature-btn">Manage Customers</button>
+                </div>
+                
+                <div class="feature-card" onclick="showLogisticsIntegration()">
+                    <div class="feature-icon">🚚</div>
+                    <h4>Logistics Integration</h4>
+                    <p>Shipping partners and delivery tracking</p>
+                    <button class="feature-btn">Setup Shipping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+    <div class="container">
+        <h2>Platform Services</h2>
+
+        <ul class="services-list">
+            <li onclick="showServiceDetail('Supplier Discovery')">Supplier Discovery</li>
+            <li onclick="showServiceDetail('Business Onboarding Guidance')">Business Onboarding Guidance</li>
+            <li onclick="showServiceDetail('Logistics Information')">Logistics Information</li>
+            <li onclick="showServiceDetail('Market Insights')">Market Insights</li>
+            <li onclick="showServiceDetail('AI Business Assistant')">AI Business Assistant</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section light">
+    <div class="container">
+        <h2>About RetailConnect</h2>
+
+        <p>
+            RetailConnect is a cloud-powered collaboration platform designed
+            to bridge the gap between retailers and wholesalers using IBM Cloud
+            technologies and Watson AI Assistant.
+        </p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+    </main>
+<footer>
+    <div class="container">
+        <p>© 2026 RetailConnect | IBM Cloud Internship Project</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "73672d4a-dfb5-46cd-b0bd-f7adc2494a84", // The ID of this integration.
+    region: "au-syd", // The region your integration is hosted in.
+    serviceInstanceID: "f08b0b8e-72af-415f-a666-ca21dba3564f", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
+</body>
+</html>
